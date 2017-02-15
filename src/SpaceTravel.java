@@ -33,6 +33,7 @@ public class SpaceTravel {
                         break;
 
                     default :
+
                         System.out.println(choice.charAt(0) + " command not found [use 'h' for help]");
                         break;
                 }
