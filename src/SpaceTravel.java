@@ -4,11 +4,19 @@ import java.util.Scanner;
  * Created by cchameyr on 2/15/17.
  */
 public class SpaceTravel {
-    public static void main (String[] args)
-    {
+
+    public static final double  ROCKET_SPEED_IN_KM_PER_S = 4.0;
+
+    private static Planet[]     planet_list = Planet.values();
+
+    private static Planet choosePlanet(Scanner scan) {
+
+    }
+
+    public static void spaceTravel () {
+
         Scanner     scan = new Scanner(System.in);
         String      choice;
-        Planet[]    planet_list = Planet.values();
         boolean     quit = false;
 
         System.out.println("Welcome");
@@ -33,12 +41,11 @@ public class SpaceTravel {
                         break;
 
                     default :
-
                         System.out.println(choice.charAt(0) + " command not found [use 'h' for help]");
                         break;
                 }
             }
         }
-        System.out.println("Bye");
+        System.out.print("Bye");
     }
 }
