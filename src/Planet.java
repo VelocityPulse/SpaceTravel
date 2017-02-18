@@ -7,8 +7,8 @@ public enum Planet {
 
     private String  namefr;
     private double  distance_sun_in_astro_unit;
-    public static final double UA_IN_KM = 149597871.0;
-    public static final double LIGHT_SPEED_IN_KM_PER_S = 299792.458;
+    public static final double UA_IN_KM = 149_597_871.0;
+    public static final double LIGHT_SPEED_IN_KM_PER_S = 299_792.458;
 
 
     public double   getDistance_sun_in_astro_unit() {

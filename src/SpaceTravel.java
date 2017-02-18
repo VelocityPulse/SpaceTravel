@@ -36,6 +36,20 @@ public class SpaceTravel {
         }
     }
 
+    private static void departureSelect(Scanner scan) {
+		System.out.println("What is your departure planet?");
+		Planet p1 = choosePlanet(scan);
+		System.out.println("Departure planet set to: " + p1.getNamefr());
+		System.out.println("What is your arrival planet?");
+		Planet p2 = choosePlanet(scan);
+		System.out.println("Arrival planet set to: " + p2.getNamefr());
+		System.out.print("Distance between " + p1.getNamefr() + " and " + p2.getNamefr() + " is : ");
+		System.out.printf("%.4f UA.\n", p1.distanceInUATo(p2));
+		System.out.printf("It is equivalent to %.1f million of Km!\n", p1.distanceInKMTo(p2) / 1_000_000);
+		System.out.printf("At the speed of the light, you will need %.1f minutes.\n", p1.travelTimeInSTO(p2) / 60);
+		System.out.printf("But with our current technology it's more %.1f month!\n", p1.travelTimeInSTo(p2, 0.0108333) / 1_000_000_000);
+	}
+
     public static void spaceTravel () {
 
         Scanner     scan = new Scanner(System.in);
@@ -61,12 +75,7 @@ public class SpaceTravel {
                         break;
 
                     case 'd' :
-                        System.out.println("What is your departure planet?");
-                        Planet p1 = choosePlanet(scan);
-                        System.out.println("Departure planet set to: " + p1.getNamefr());
-                        System.out.println("What is your arrival planet?");
-                        Planet p2 = choosePlanet(scan);
-                        System.out.println("Arrival planet set to: " + p2.getNamefr());
+						departureSelect(scan);
                         break;
 
                     default :
