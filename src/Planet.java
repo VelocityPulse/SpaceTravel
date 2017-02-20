@@ -5,10 +5,10 @@ public enum Planet {
     MERCURY("Mercure", 0.387) , VENUS("Venus", 0.722) , EARTH("Terre", 1) , MARS("Mars", 1.52) ,
     JUPITER("Jupiter", 5.20) , SATURN("Saturne", 9.58) , URANUS("Uranus", 19.2) , NEPTUNE("Neptune", 30.1);
 
-    private String  namefr;
-    private double  distance_sun_in_astro_unit;
-    public static final double UA_IN_KM = 149_597_871.0;
-    public static final double LIGHT_SPEED_IN_KM_PER_S = 299_792.458;
+    private String              namefr;
+    private double              distance_sun_in_astro_unit;
+    public static final double  UA_IN_KM = 149_597_871.0;
+    public static final double  LIGHT_SPEED_IN_KM_PER_S = 299_792.458;
 
 
     public double   getDistance_sun_in_astro_unit() {
@@ -24,7 +24,7 @@ public enum Planet {
     }
 
     public double distanceInUATo(Planet otherPlanet) {
-        double     result;
+        double  result;
 
         result = this.distance_sun_in_astro_unit - otherPlanet.getDistance_sun_in_astro_unit();
         return (result < 0 ? -result : result);
