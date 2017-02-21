@@ -55,16 +55,16 @@ public class SpaceTravel {
 		System.out.printf("%.4f UA.\n", p1.distanceInUATo(p2));
 		System.out.printf("It is equivalent to %.1f million of Km!\n", p1.distanceInKMTo(p2) / 1_000_000);
 		System.out.printf("At the speed of the light, you will need %.1f minutes.\n", p1.travelTimeInSTO(p2) / 60);
-		System.out.printf("But with our current technology it's more %.1f month!\n", p1.travelTimeInSTo(p2, ROCKET_SPEED_IN_KM_PER_S));
+		System.out.printf("But with our current technology it's more %.1f month!\n", p1.travelTimeInSTo(p2, ROCKET_SPEED_IN_KM_PER_S) / (30*24*3600));
 	}
 
-	private static Date chooseDate(Scanner scan) {
+	private static Calendar chooseDate(Scanner scan) {
         Calendar    departure = Calendar.getInstance();
 
         while (true) {
             System.out.print("Year: ");
             if (scan.hasNext(Pattern.compile("[0-9]{1,4}"))) {
-                departure.set(Calendar.YEAR, scan.nextInt() - 1900);
+                departure.set(Calendar.YEAR, scan.nextInt());
                 scan.nextLine();
                 break;
             }
@@ -83,7 +83,8 @@ public class SpaceTravel {
         }
         while (true) {
             System.out.print("Day: ");
-            if (scan.hasNext(Pattern.compile("[0-9]{1,2}"))) {
+            if (scan.hasNext(Pattern.compile("[0-9]{1,2}")))
+            {
                 departure.set(Calendar.DAY_OF_MONTH, scan.nextInt());
                 scan.nextLine();
                 break;
@@ -93,7 +94,8 @@ public class SpaceTravel {
         }
         while (true) {
             System.out.print("Hour: ");
-            if (scan.hasNext(Pattern.compile("[0-9]{1,2}]"))) {
+            if (scan.hasNext(Pattern.compile("[0-9]{1,2}")))
+            {
                 departure.set(Calendar.HOUR, scan.nextInt());
                 scan.nextLine();
                 break;
@@ -103,7 +105,7 @@ public class SpaceTravel {
         }
         while (true) {
             System.out.print("Minute: ");
-            if (scan.hasNext(Pattern.compile("[0-9]{1,2}]"))) {
+            if (scan.hasNext(Pattern.compile("[0-9]{1,2}"))) {
                 departure.set(Calendar.MINUTE, scan.nextInt());
                 scan.nextLine();
                 break;
@@ -121,14 +123,16 @@ public class SpaceTravel {
             else
                 scan.nextLine();
         }
-        return (departure.getTime());
+        return (departure);
     }
 
 	private static void calculateArrivalTime(Scanner scan) {
         SimpleDateFormat    dateFormatter = new SimpleDateFormat("d MMMM y H:mm:s");
+        Calendar choosenDate = chooseDate(scan);
 
-        chooseDate(scan);
-
+        System.out.println("Rocket departure time: " + dateFormatter.format(choosenDate.getTime()));
+        choosenDate.add(Calendar.SECOND, (int)p1.travelTimeInSTo(p2, ROCKET_SPEED_IN_KM_PER_S));
+        System.out.println("Rocket arrival time: " + dateFormatter.format(choosenDate.getTime()));
     }
 
     public static void spaceTravel () {
